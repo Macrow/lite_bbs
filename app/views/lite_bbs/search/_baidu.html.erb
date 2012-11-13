@@ -1,0 +1,11 @@
+<form action="http://www.baidu.com/baidu" class='form-search'> 
+  <div class='input-append'>
+    <input type=text name=word maxlength="100" class='search-query'> 
+    <input type="submit" value="百度" class='btn btn-primary'> 
+  </div>
+  <input name=tn type=hidden value="bds"> 
+  <input name=cl type=hidden value="3"> 
+  <input name=ct type=hidden value="2097152">
+  <input name=ie type=hidden value=utf-8>
+  <input name=si type=hidden value="<%= "#{request.domain}#{(':' + request.port.to_s) unless request.port == 80}" %>"> 
+</form>

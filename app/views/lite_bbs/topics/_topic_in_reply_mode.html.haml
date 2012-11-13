@@ -1,0 +1,19 @@
+%tr{id: "topic_#{topic.id}"}
+  %td.user= display_user_info(topic.user)
+  %td.body
+    = display_icon('time') + content_tag(:span, "#{t('lite_bbs.actions.posted')}: #{time_ago_in_words(topic.created_at)}", class: 'post_time')
+    = display_icon('eye-open') + content_tag(:span, "#{t('lite_bbs.common.view_count')}: #{topic.view_count}", class: 'post_time')
+    = display_icon('play-circle') + content_tag(:pan, t('lite_bbs.count.reply', count: topic.replies.size), class: 'post_time')
+    %span.topic_label
+      = display_label(t('lite_bbs.actions.top'), 'top label-important') unless topic.stick_at.nil?
+      = display_label(t('lite_bbs.actions.seal'), 'seal') unless topic.can_reply
+    .quick_management
+      - if can? :manage, topic
+        %span.stick= link_to "#{topic.stick_at.nil? ? t('lite_bbs.actions.top') : t('lite_bbs.actions.cancel_top')}", toggle_stick_topic_path(topic), method: :put, class: 'tools btn btn-mini btn-warning', remote: true
+        %span.can_reply= link_to "#{topic.can_reply? ? t('lite_bbs.actions.seal') : t('lite_bbs.actions.cancel_seal')}", toggle_can_reply_topic_path(topic), method: :put, class: 'tools btn btn-mini btn-inverse', remote: true
+      - if can? :destroy, topic
+        = link_to t('lite_bbs.actions.delete'), topic, method: :delete, class: 'tools btn btn-mini btn-danger', confirm: t('lite_bbs.actions.confirm')
+      - if can? :update, topic
+        = link_to t('lite_bbs.actions.edit'), [:edit, topic], class: 'tools btn btn-mini btn-info', remote: true
+    <hr>
+    = render 'lite_bbs/topics/topic_in_reply_mode_content', topic: topic

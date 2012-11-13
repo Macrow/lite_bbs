@@ -1,0 +1,14 @@
+if ($('#reply_content_<%= @reply.id %>').is(':visible')) {
+  $('#reply_<%= @reply.id %> td.body').append("<%= j(render(partial: "quick_form", locals: {topic: @topic, reply: @reply})) %>").slideDown();
+  $('#reply_content_<%= @reply.id %>').hide();
+  KindEditor.create('#reply_content_kindeditor_<%= @reply.id %>', {
+  	allowFileManager: false,
+  	resizeType: 1,
+  	height: 200,
+  	width: '100%',
+  	themeType: 'simple',
+  	items: ['fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+  	uploadJson: '/kindeditor/upload',
+  	fileManagerJson: '/kindeditor/filemanager'
+  });  
+}

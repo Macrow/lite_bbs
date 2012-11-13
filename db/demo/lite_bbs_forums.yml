@@ -1,0 +1,16 @@
+<%
+  require "ffaker"
+  print "Loading forums"
+
+  for i in (1 .. 25) do
+%>
+forum<%= i %>:
+  id               : <%= i %>
+  section_id       : <%= rand(5) + 1 %>
+  name             : <%= Faker::Company.name %>
+  description      : <%= Faker::Company.catch_phrase %>
+  created_at       : <%= created_at = (rand(60) + 2).days.ago + rand(600).minutes; created_at.to_s(:db) %>
+  updated_at       : <%= (created_at + rand(36_000).seconds).to_s(:db) %>
+  <%= print "." if i % 5 == 0 %>
+<% end %>
+<%= puts %>

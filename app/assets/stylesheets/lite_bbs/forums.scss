@@ -1,0 +1,58 @@
+@import 'compass/css3';
+@import 'compass/utilities';
+
+$section_head_height: 22px;
+$section_body_height: 45px;
+$section_mobile_body_height: 22px;
+
+table.forum {
+  background: white;
+  tbody.head th {
+    height: section_head_height;
+    background: #EEE;
+  }
+  tbody.body td {
+    height: $section_body_height;
+    line-height: $section_body_height;
+  }
+  tbody.body td.mobile {
+    height: $section_mobile_body_height;
+    line-height: $section_mobile_body_height;
+  }
+  a.section_name {
+    margin-left: 8px;
+  }
+  span.section_description, span.forum_description {
+    font-weight: normal;
+    font-style:italic;
+    color: gray;
+    font-size: 0.9em;
+    margin: 0 10px;
+  }
+  .counter, .forum_counter, .label_title {
+    font-weight: normal;
+    font-size: 0.9em;
+    color: gray;
+  }
+  .counter, .forum_counter {
+    text-align: center;
+  }
+  .forum_counter {
+    .badge {
+      margin: 0 5px;
+    }
+  }
+  .forum_name_icon {
+    margin: 0 5px 0 12px;
+  }
+  a.forum_name {
+    margin-right: 10px;
+    font-size: 1.2em;
+  }
+  .last_topic {
+    color: gray;
+    line-height: 18px;
+    text-align: center;
+    vertical-align: middle;
+  }
+}

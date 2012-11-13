@@ -1,0 +1,41 @@
+@import 'compass/css3';
+@import 'compass/utilities';
+
+table.reply {
+  background: white;
+  td.user {
+    width: 50px;
+    text-align: center;
+    color: gray;
+    font-size: 0.9em;
+  }
+  td.body {
+    hr {
+      margin: 5px;
+      padding: 0;
+    }
+    .post_time {
+      font-size: 0.8em;
+      color: gray;
+      margin: 0 5px;
+    }
+    .quick_management {
+      @include float-right;
+      margin: 0 1px;
+    }
+    .title {
+      font-size: 1.2em;
+      font-weight: bold;
+      line-height: 30px;
+      padding: 0 10px;
+    }
+    .content {
+      padding: 0 5px;
+    }
+    .modified {
+      font-size: 0.8em;
+      text-align: right;
+      color: gray;
+    }
+  }
+}

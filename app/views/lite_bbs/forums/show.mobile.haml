@@ -1,0 +1,17 @@
+#lite_bbs
+  = title "#{LiteBbs::bbs_name} - #{@forum.name}"
+  = display_breadcrumb
+  %table.table.table-bordered.topic
+    %tbody.head
+      %tr
+        %th= display_icon('th-list') + link_to(@forum.name, @forum, class: 'name')
+    %tbody#topics.body
+      = render partial: 'lite_bbs/topics/topic', collection: @stick_topics, as: :topic
+      = render @topics
+  = will_paginate(@topics)
+  - if can? :create, LiteBbs::Topic
+    %table.table.table-bordered.reply
+      %tbody
+        %tr
+          %td.user= display_user_info(litebbs_current_user)
+          %td.content= render partial: 'lite_bbs/topics/form', locals: { remote: true }

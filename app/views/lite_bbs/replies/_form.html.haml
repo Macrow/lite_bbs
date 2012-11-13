@@ -1,0 +1,3 @@
+= simple_form_for([@topic, @reply], remote: true, html: { class: 'form' }) do |f|
+  = f.input :content, as: :kindeditor, label: false, input_html: { simple_mode: true, resizeType: 1, allowFileManager: false, height: 200, themeType: 'simple' }
+  .form-actions= f.button :submit, class: 'btn-primary'

@@ -1,0 +1,15 @@
+#lite_bbs
+  = title "#{LiteBbs::bbs_name} - #{@topic.title}"
+  = display_breadcrumb
+  %table.table.table-bordered.reply
+    %tbody#replies
+      = render 'lite_bbs/topics/topic_in_reply_mode', topic: @topic 
+      - @replies.each_with_index do |reply, index|
+        = render partial: 'lite_bbs/replies/reply', locals: { reply: reply, index: index }
+  = will_paginate(@replies)
+  - display_status = ((can?(:create, LiteBbs::Reply) and @topic.can_reply) ? 'table' : 'none')
+  %table.table.table-bordered.reply{id: 'reply_form_table', style: "display: #{display_status}"}
+    %tbody
+      %tr
+        %td.user= display_user_info(litebbs_current_user)
+        %td.content= render 'lite_bbs/replies/form'

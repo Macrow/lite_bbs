@@ -1,0 +1,21 @@
+<% if @topic.valid? %>
+	$('#quick_topic_form_<%= @topic.id %>').remove();
+	$('#topic_content_<%= @topic.id %>').html('<%= j(render("topic_in_reply_mode_content", :topic => @topic)) %>').slideDown();
+<% else %>
+  <% if @topic.errors.keys.include?(:title) %>
+  	$('input#topic_title_<%= @topic.id %>').closest('.control-group').addClass('error');
+  	$('input#topic_title_<%= @topic.id %>').next('span.help-inline').remove();
+  	$('input#topic_title_<%= @topic.id %>').closest('.controls').append('<span class="help-inline"><%= j(@topic.errors.messages.values_at(:title).join(";")) %></span>');
+  <% else %>
+  	$('input#topic_title_<%= @topic.id %>').closest('.control-group').removeClass('error');
+  	$('input#topic_title_<%= @topic.id %>').next('span.help-inline').remove();
+  <% end %>
+	<% if @topic.errors.keys.include?(:content) %>
+		$('textarea#topic_content_kindeditor_<%= @topic.id %>').closest('.control-group').addClass('error');
+		$('textarea#topic_content_kindeditor_<%= @topic.id %>').next('span.help-inline').remove();
+		$('textarea#topic_content_kindeditor_<%= @topic.id %>').closest('.controls').append('<span class="help-inline"><%= j(@topic.errors.messages.values_at(:content).join(";")) %></span>');
+	<% else %>
+  	$('textarea#topic_content_kindeditor_<%= @topic.id %>').closest('.control-group').removeClass('error');
+  	$('textarea#topic_content_kindeditor_<%= @topic.id %>').next('span.help-inline').remove();
+	<% end %>
+<% end %>

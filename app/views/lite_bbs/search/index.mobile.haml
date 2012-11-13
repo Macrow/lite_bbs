@@ -1,0 +1,19 @@
+#lite_bbs
+  = title "#{LiteBbs::bbs_name} - #{t('lite_bbs.common.search_enter')} '#{params[:q][:title_cont]}'"
+  = display_breadcrumb
+  %table.table.table-bordered.topic
+    %tbody.head
+      %tr
+        %th
+          - if @good_search
+            = "#{t('lite_bbs.common.search_enter')}: '#{params[:q][:title_cont]}', #{t('lite_bbs.common.result')}: #{display_badge(@topics.count)}".html_safe
+    %tbody#topics.body
+      - if @topics and !@topics.empty?
+        = render @topics
+      - else
+        %tr
+          %td
+            .no_result= @good_search ? t('lite_bbs.common.no_topics_found') : t('lite_bbs.common.no_search_text')
+  = will_paginate(@topics) if @topics
+:javascript
+  $(".topic_title").highlight("#{h params[:q][:title_cont]}");

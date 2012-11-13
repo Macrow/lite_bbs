@@ -1,0 +1,6 @@
+$('#topic_<%= @topic.id %> .quick_management span.stick').replaceWith('<span class="stick"><%= link_to "#{@topic.stick_at.nil? ? t('lite_bbs.actions.top') : t('lite_bbs.actions.cancel_top')}", toggle_stick_topic_path(@topic), method: :put, class: 'tools btn btn-mini btn-warning', remote: true %></span>');
+<% if @topic.stick_at.nil? %>
+  $('#topic_<%= @topic.id %> span.topic_label span.top').remove();
+<% else %>
+  $('#topic_<%= @topic.id %> span.topic_label').append('<%= display_label(t("lite_bbs.actions.top"), "label-important top") %>');
+<% end %>

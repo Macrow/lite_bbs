@@ -1,0 +1,7 @@
+%div{:id => "quick_topic_form_#{topic.id}"}
+  = simple_form_for(topic, remote: true, html: { class: 'form' }) do |f|
+    = f.input :title, input_html: { class: "span8", id: "topic_title_#{topic.id}" }
+    = f.input :content, label: false, input_html: { id: "topic_content_kindeditor_#{topic.id}" }
+    .form-actions
+      = f.button :submit, :class => 'btn-primary'
+      = link_to t('lite_bbs.actions.cancel'), "#", :class => 'btn', onclick: "$('#quick_topic_form_#{topic.id}').remove();$('#topic_content_#{topic.id}').show();return false;"

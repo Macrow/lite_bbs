@@ -1,0 +1,13 @@
+<% if @reply.valid? %>
+  $('#replies').append("<%=j render partial: 'reply', locals: { reply: @reply, index: @topic.replies.size }  %>");
+  $('form#new_reply')[0].reset();
+  $('.control-group').removeClass('error');
+  $('span.help-inline').remove();
+  KindEditor.instances[0].html('');
+<% else %>
+  <% if @reply.errors.keys.include?(:content) %>
+  	$('textarea#reply_content').closest('.control-group').addClass('error');
+    $('#error_content_tip').remove();
+  	$('textarea#reply_content').closest('.controls').append('<span class="help-inline" id="error_content_tip"><%= j(@reply.errors.messages.values_at(:content).join(";")) %></span>');
+  <% end %>
+<% end %>

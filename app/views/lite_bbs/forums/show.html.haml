@@ -1,0 +1,21 @@
+#lite_bbs
+  = title "#{LiteBbs::bbs_name} - #{@forum.name}"
+  = display_breadcrumb
+  %table.table.table-bordered.table-hover.topic
+    %tbody.head
+      %tr
+        %th
+          .span10= display_icon('th-list') + link_to(@forum.name, @forum, class: 'name') + content_tag(:span, "#{@forum.description} ( #{t('lite_bbs.count.topic', count: @forum.topics.size)}, #{t('lite_bbs.count.reply', count: @forum.replies.size)} )", class: 'description')
+          .span2.info= "#{t('lite_bbs.common.author')} / #{t('lite_bbs.common.date')}"
+          .span1.counter= t('lite_bbs.models.replies')
+          .span3.last_reply= t('lite_bbs.common.last_reply')
+    %tbody#topics.body
+      = render partial: 'lite_bbs/topics/topic', collection: @stick_topics, as: :topic
+      = render @topics
+  = will_paginate(@topics)
+  - if can? :create, LiteBbs::Topic
+    %table.table.table-bordered.reply
+      %tbody
+        %tr
+          %td.user= display_user_info(litebbs_current_user)
+          %td.content= render partial: 'lite_bbs/topics/form', locals: { remote: true }

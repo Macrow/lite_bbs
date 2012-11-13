@@ -1,0 +1,26 @@
+= content_template_begin
+%h3= "#{t('lite_bbs.common.all')} #{t('lite_bbs.models.forums')}"
+.top_tool_bar= link_to "#{t('lite_bbs.common.new')} #{LiteBbs::Forum.model_name.human}", new_admin_forum_path, class: 'btn btn-small btn-primary'
+- @sections.each do |section|
+  = form_tag order_admin_forums_path, method: :put do
+    %h4= section.name
+    %table.table.table-hover
+      %thead
+        %tr
+          %th{width: '5%'} #
+          %th= t('activerecord.attributes.lite_bbs/forum.name')
+          %th= t('activerecord.attributes.lite_bbs/forum.description')
+          %th{width: '10%'}= t('lite_bbs.models.topics')
+          %th{width: '10%'}= t('lite_bbs.models.replies')
+      %tbody
+        - section.forums.each_with_index do |forum, index|
+          %tr
+            %td
+              = hidden_field_tag 'forum_ids[]', forum.id
+              = text_field_tag 'forum_orders[]', index + 1, class: 'span1'
+            %td= link_to forum.name, edit_admin_forum_path(forum)
+            %td= forum.description
+            %td= display_badge(forum.topics.size)
+            %td= display_badge(forum.replies.size)
+    .form-actions= submit_tag t('lite_bbs.actions.save_order'), class: 'btn'
+= content_template_end

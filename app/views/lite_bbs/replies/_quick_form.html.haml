@@ -1,0 +1,6 @@
+%div{:id => "quick_form_#{reply.id}"}
+  = simple_form_for([topic, reply], remote: true, html: { class: 'form' }) do |f|
+    = f.input :content, label: false, input_html: { id: "reply_content_kindeditor_#{reply.id}" }
+    .form-actions
+      = f.button :submit, :class => 'btn-primary'
+      = link_to t('lite_bbs.actions.cancel'), "#", :class => 'btn', onclick: "$('#quick_form_#{reply.id}').remove();$('#reply_content_#{reply.id}').show();return false;"

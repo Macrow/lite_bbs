@@ -1,0 +1,17 @@
+<%
+  require "ffaker"
+  print "Loading replies"
+
+  for i in (1 .. 3000) do
+%>
+reply<%= i %>:
+  id               : <%= i %>
+  topic_id         : <%= tid = rand(300) + 1 %>  
+  forum_id         : <%= LiteBbs::Topic.find(tid).forum.id %>
+  user_id          : <%= rand(30) + 1 %>
+  content          : <%= Faker::Lorem.paragraph(3) %>
+  created_at       : <%= created_at = (rand(60) + 2).days.ago + rand(600).minutes; created_at.to_s(:db) %>
+  updated_at       : <%= (created_at + (rand(10) == 0 ? rand(36_000).seconds : 0)).to_s(:db) %>
+  <%= print "." if i % 10 == 0 %>
+<% end %>
+<%= puts %>

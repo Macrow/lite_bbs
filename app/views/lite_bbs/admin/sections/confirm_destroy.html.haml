@@ -1,0 +1,9 @@
+= content_template_begin
+%h3= "#{LiteBbs::Section.model_name.human} #{t('lite_bbs.common.destroy_confirm')}"
+%h5= "#{@section.name}:"
+= "#{t('lite_bbs.count.forum', count: display_badge(@section.forums.size))} & #{t('lite_bbs.count.topic', count: display_badge(@section.topics.size))} #{t('lite_bbs.common.will_be_destroyed')}".html_safe
+= simple_form_for @section, url: admin_section_path(@section), method: :delete do |f|
+  .form-actions
+    = f.submit t('lite_bbs.actions.understood'), class: 'btn btn-danger'
+    = link_to t('lite_bbs.actions.cancel'), admin_sections_path, class: 'btn'
+= content_template_end

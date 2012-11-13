@@ -1,0 +1,332 @@
+zh-CN:
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      short: "%b%d日"
+      long: "%Y年%b%d日"
+    day_names:
+      - 星期日
+      - 星期一
+      - 星期二
+      - 星期三
+      - 星期四
+      - 星期五
+      - 星期六
+    abbr_day_names:
+      - 日
+      - 一
+      - 二
+      - 三
+      - 四
+      - 五
+      - 六
+    month_names:
+      - ~
+      - 一月
+      - 二月
+      - 三月
+      - 四月
+      - 五月
+      - 六月
+      - 七月
+      - 八月
+      - 九月
+      - 十月
+      - 十一月
+      - 十二月
+    abbr_month_names:
+      - ~
+      - 1月
+      - 2月
+      - 3月
+      - 4月
+      - 5月
+      - 6月
+      - 7月
+      - 8月
+      - 9月
+      - 10月
+      - 11月
+      - 12月
+    order:
+      - :year
+      - :month
+      - :day
+
+  time:
+    formats:
+      default: "%Y年%b%d日 %A %H:%M:%S %Z"
+      short: "%b%d日 %H:%M"
+      long: "%Y年%b%d日 %H:%M"
+    am: "上午"
+    pm: "下午"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "半分钟"
+      less_than_x_seconds:
+        one: "不到一秒"
+        other: "不到 %{count} 秒"
+      x_seconds:
+        one: "一秒"
+        other: "%{count} 秒"
+      less_than_x_minutes:
+        one: "不到一分钟"
+        other: "不到 %{count} 分钟"
+      x_minutes:
+        one: "一分钟"
+        other: "%{count} 分钟"
+      about_x_hours:
+        one: "大约一小时"
+        other: "大约 %{count} 小时"
+      x_days:
+        one: "一天"
+        other: "%{count} 天"
+      about_x_months:
+        one: "大约一个月"
+        other: "大约 %{count} 个月"
+      x_months:
+        one: "一个月"
+        other: "%{count} 个月"
+      about_x_years:
+        one: "大约一年"
+        other: "大约 %{count} 年"
+      over_x_years:
+        one: "一年多"
+        other: "%{count} 年多"
+      almost_x_years:
+        one:   "接近一年"
+        other: "接近 %{count} 年"
+    prompts:
+      year:   "年"
+      month:  "月"
+      day:    "日"
+      hour:   "时"
+      minute: "分"
+      second: "秒"
+
+  number:
+    format:
+      separator: "."
+      delimiter: ","
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+    currency:
+      format:
+        format: "%u %n"
+        unit: "CN¥"
+        separator: "."
+        delimiter: ","
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+        significant: false
+        strip_insignificant_zeros: false
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "千" # 10^3 kilo
+          million: "百万" # 10^6 mega
+          billion: "十亿" # 10^9 giga
+          trillion: "兆" # 10^12 tera
+          quadrillion: "千兆" # 10^15 peta
+          # 10^18 exa, 10^21 zetta, 10^24 yotta
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " 和 "
+      last_word_connector: ", 和 "
+    select:
+      prompt: "请选择"
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages: &errors_messages
+      inclusion: "不包含于列表中"
+      exclusion: "是保留关键字"
+      invalid: "是无效的"
+      confirmation: "与确认值不匹配"
+      accepted: "必须是可被接受的"
+      empty: "不能留空"
+      blank: "不能为空字符"
+      too_long: "过长（最长为 %{count} 个字符）"
+      too_short: "过短（最短为 %{count} 个字符）"
+      wrong_length: "长度非法（必须为 %{count} 个字符）"
+      not_a_number: "不是数字"
+      not_an_integer: "必须是整数"
+      greater_than: "必须大于 %{count}"
+      greater_than_or_equal_to: "必须大于或等于 %{count}"
+      equal_to: "必须等于 %{count}"
+      less_than: "必须小于 %{count}"
+      less_than_or_equal_to: "必须小于或等于 %{count}"
+      odd: "必须为单数"
+      even: "必须为双数"
+      taken: "已经被使用"
+      record_invalid: "验证失败: %{errors}"
+      not_saved:
+        one: "有 1 个错误发生导致无法被保存。"
+        other: "有 %{count} 个错误发生导致无法被保存。"
+    template: &errors_template
+      header:
+        one: "有 1 个错误发生导致「%{model}」无法被保存。"
+        other: "有 %{count} 个错误发生导致「%{model}」无法被保存。"
+      body: "如下字段出现错误："
+    genernal: 发生错误
+
+  activerecord:
+    errors:
+      full_messages:
+        format: "%{attribute} %{message}"
+      messages:
+        <<: *errors_messages
+      template:
+        <<: *errors_template
+        
+  helpers:
+    select:
+      prompt: 请选择
+    submit:
+      create: "创建%{model}"
+      update: "更新%{model}"
+      submit: "储存%{model}"
+
+  flash:
+    error: 错误
+    info: 信息
+    notice: 注意
+  
+  activerecord:
+    models:
+      lite_bbs/section: 讨论区
+      lite_bbs/forum: 论坛
+      lite_bbs/topic: 主题
+      lite_bbs/reply: 回复
+    attributes:
+      lite_bbs/section:
+        name: 名称
+        description: 简介
+        orders: 排序
+        forums_count: 论坛
+        topics_count: 主题
+      lite_bbs/forum:
+        name: 名称
+        description: 简介
+        orders: 排序
+        topics_count: 主题
+        replies_count: 回复
+        section: 讨论区
+      lite_bbs/topic:
+        title: 标题
+        content: 内容
+        replies_count: 回复
+        view_count: 浏览
+        stick: 置顶
+        can_reply: 允许回复？
+        section: 讨论区
+        forum: 论坛
+      lite_bbs/reply:
+        content: 内容
+        topic: 主题
+        forum: 论坛
+  
+  lite_bbs:
+    models:
+      section: 讨论区
+      sections: 讨论区
+      forum: 论坛
+      forums: 论坛
+      topic: 主题
+      topics: 主题
+      reply: 回复
+      replies: 回复
+    count:
+      section:
+        zero: 暂无讨论区
+        one: 1个讨论区
+        other: "%{count}个讨论区"
+      forum:
+        zero: 暂无论坛
+        one: 1个论坛
+        other: "%{count}个论坛"
+      topic:
+        zero: 暂无主题
+        one: 1个主题
+        other: "%{count}个主题"
+      reply:
+        zero: 暂无回复
+        one: 1条回复
+        other: "%{count}条回复"
+    common:
+      last_topic: 最新主题
+      last_reply: 最新回复
+      author: 作者
+      date: 日期
+      view_count: 浏览次数
+      number: 楼层
+      home: 首页
+      all: 全部
+      new: 新建
+      edit: 编辑
+      destroy_confirm: 确认删除
+      stick: 置顶
+      seal: 封贴
+      type: 类型
+      count_bar: 数量图
+      count: 数量
+      statistics: 数据统计
+      will_be_destroyed: 会被全部删除 ！！
+      no_search_text: 请输入文字进行搜索！
+      no_topics_found: 没找到相关主题！
+      search_enter: 你正在搜索
+      result: 结果
+      administraion: 后台管理
+    actions:
+      search: 搜索
+      search_tip: 搜索 ...
+      advanced_search: 高级搜索
+      posted: 发表
+      top: 置顶
+      seal: 封贴
+      cancel_top: 取消置顶
+      cancel_seal: 取消封贴
+      edit: 编辑
+      delete: 删除
+      destroy: 删除
+      cancel: 取消
+      confirm: 你确定吗？
+      save_order: 保存排序
+      understood: '是的，我知道了，全部删除！'
+    msg:
+      admin_only: 仅限管理员！
+      create: '%{model}创建成功！'
+      update: '%{model}更新成功！'
+      destroy: '%{model}删除成功！'
+      order: '%{model}排序更新成功！'
+
+  will_paginate:
+    previous_label: 上一页
+    next_label: 下一页
+    page_gap: ...

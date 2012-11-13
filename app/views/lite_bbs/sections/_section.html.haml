@@ -1,0 +1,9 @@
+%table.table.table-bordered.table-hover.forum
+  %tbody.head
+    %tr
+      %th
+        .span11= display_icon('th-large') + link_to(section.name, section, class: 'section_name') + content_tag(:span, section.description, class: 'section_description')
+        .span2.counter= "#{t('lite_bbs.models.topics')} / #{t('lite_bbs.models.replies')}"
+        .span3.counter= "#{t('lite_bbs.common.last_topic')} / #{t('lite_bbs.common.author')}"
+  %tbody.body
+    = render section.forums

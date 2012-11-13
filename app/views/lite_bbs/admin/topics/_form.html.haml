@@ -1,0 +1,11 @@
+= simple_form_for [:admin, @topic], class: 'form' do |f|
+  = f.label :forum
+  = f.select :forum_id, option_groups_from_collection_for_select(@sections, :forums, :name, :id, :name, @topic.forum_id), include_blank: false, class: 'span6'
+  = f.input :title, input_html: {class: 'span6'}
+  = f.input :can_reply, input_html: {class: 'checkbox inline'}
+  = f.input :stick, as: :boolean
+  = f.input :content, as: :kindeditor, input_html: {simple_mode: true, resizeType: 1, height: 200, themeType: 'simple'}
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to t('lite_bbs.actions.destroy'), admin_topic_path(@topic), method: :delete, confirm: t('lite_bbs.actions.confirm'), class: 'btn btn-danger' if @topic.valid?
+    = link_to t('lite_bbs.actions.cancel'), admin_topics_path, class: 'btn'

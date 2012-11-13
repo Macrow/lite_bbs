@@ -1,0 +1,10 @@
+%tr
+  %td
+    .span10
+      = display_topic_thread_icon(topic)
+      = display_label(t('lite_bbs.actions.top'), 'label-important') unless topic.stick_at.nil?
+      = display_label(t('lite_bbs.actions.seal')) unless topic.can_reply
+      %span.topic_title= link_to(topic.title, topic, class: 'name')
+    .span2.info= (litebbs_user_name(topic.user) + '<br>' + topic.created_at.to_s).html_safe
+    .span1.counter= display_badge(topic.replies.size)
+    .span3.last_reply= display_last_reply_info_from_topic(topic)

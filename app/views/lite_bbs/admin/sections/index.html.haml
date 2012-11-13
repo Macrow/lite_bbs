@@ -1,0 +1,24 @@
+= content_template_begin
+%h3= "#{t('lite_bbs.common.all')} #{t('lite_bbs.models.sections')}"
+.top_tool_bar= link_to "#{t('lite_bbs.common.new')} #{LiteBbs::Section.model_name.human}", new_admin_section_path, class: 'btn btn-small btn-primary'
+= form_tag order_admin_sections_path, method: :put do
+  %table.table.table-hover
+    %thead
+      %tr
+        %th{width: '5%'} #
+        %th= t('activerecord.attributes.lite_bbs/section.name')
+        %th= t('activerecord.attributes.lite_bbs/section.description')
+        %th{width: '10%'}= t('lite_bbs.models.forums')
+        %th{width: '10%'}= t('lite_bbs.models.topics')
+    %tbody
+      - @sections.each_with_index do |section, index|
+        %tr
+          %td
+            = hidden_field_tag 'section_ids[]', section.id
+            = text_field_tag 'section_orders[]', index + 1, class: 'span1'
+          %td= link_to section.name, edit_admin_section_path(section)
+          %td= section.description
+          %td= display_badge(section.forums.size)
+          %td= display_badge(section.topics.size)
+  .form-actions= submit_tag t('lite_bbs.actions.save_order'), class: 'btn'
+= content_template_end

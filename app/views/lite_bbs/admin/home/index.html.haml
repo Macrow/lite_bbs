@@ -1,0 +1,17 @@
+= content_template_begin
+%h3= t('lite_bbs.common.statistics')
+%table.table.table-hover
+  %thead
+    %tr
+      %th{width: '5%'} #
+      %th{width: '10%'}= t('lite_bbs.common.type')
+      %th= t('lite_bbs.common.count_bar')
+      %th{width: '10%'}= t('lite_bbs.common.count')
+  %tbody
+    - @names.each_with_index do |name, index|
+      %tr
+        %td= index + 1
+        %td= "LiteBbs::#{name}".constantize.model_name.human
+        %td= display_bar(@counts.max, @counts[index])
+        %td= display_badge(@counts[index])
+= content_template_end

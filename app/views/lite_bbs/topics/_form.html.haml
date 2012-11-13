@@ -1,0 +1,5 @@
+- remote = (remote ? true : false)
+= simple_form_for([@forum, @topic], remote: remote, html: { class: 'form-inline' }) do |f|
+  = f.input :title, input_html: { class: "span8" }
+  = f.input :content, as: :kindeditor, input_html: { simple_mode: true, resizeType: 1, allowFileManager: false, height: 200, themeType: 'simple' }
+  .form-actions= f.button :submit, :class => 'btn-primary'

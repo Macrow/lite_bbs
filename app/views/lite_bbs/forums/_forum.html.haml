@@ -1,0 +1,9 @@
+%tr
+  %td
+    .span11= display_icon('play-circle forum_name_icon') + link_to(forum.name, forum, class: 'forum_name')  + content_tag(:span, forum.description, class: 'forum_description hidden-phone hidden-tablet')
+    .span2.forum_counter= display_badge(forum.topics.size, min: 20, max: 50) + divider + display_badge(forum.replies.size, min: 50, max: 100)
+    .span3.last_topic
+      - if forum.last_topic
+        = link_to(time_ago_in_words(forum.last_topic.created_at), forum.last_topic)
+        <br>
+        = litebbs_user_name(forum.last_topic.user)

@@ -1,0 +1,10 @@
+<% if @reply.valid? %>
+	$('#quick_form_<%= @reply.id %>').remove();
+	$('#reply_content_<%= @reply.id %>').html('<%= j(render("reply_content", :reply => @reply)) %>').slideDown();
+<% else %>
+	<% if @reply.errors.keys.include?(:content) %>
+		$('textarea#reply_content_kindeditor_<%= @reply.id %>').closest('.control-group').addClass('error');
+		$('textarea#reply_content_kindeditor_<%= @reply.id %>').next('span.help-inline').remove();
+		$('textarea#reply_content_kindeditor_<%= @reply.id %>').closest('.controls').append('<span class="help-inline"><%= j(@reply.errors.messages.values_at(:content).join(";")) %></span>');
+	<% end %>	
+<% end %>

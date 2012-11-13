@@ -1,0 +1,24 @@
+<% if @topic.valid? %>
+  $('#topics').prepend("<%=j render @topic %>");
+  $('form#new_topic')[0].reset();
+  $('.control-group').removeClass('error');
+  $('span.help-inline').remove();
+  KindEditor.instances[0].html('');
+<% else %>
+  <% if @topic.errors.keys.include?(:title) %>
+  	$('input#topic_title').closest('.control-group').addClass('error');
+    $('#error_title_tip').remove();
+  	$('input#topic_title').closest('.controls').append('<span class="help-inline" id="error_title_tip"><%= j(@topic.errors.messages.values_at(:title).join(";")) %></span>');
+  <% else %>
+  	$('input#topic_title').closest('.control-group').removeClass('error');
+    $('#error_title_tip').remove();  
+  <% end %>
+  <% if @topic.errors.keys.include?(:content) %>
+  	$('textarea#topic_content').closest('.control-group').addClass('error');
+    $('#error_content_tip').remove();
+  	$('textarea#topic_content').closest('.controls').append('<span class="help-inline" id="error_content_tip"><%= j(@topic.errors.messages.values_at(:content).join(";")) %></span>');
+  <% else %>
+  	$('textarea#topic_content').closest('.control-group').removeClass('error');
+    $('#error_content_tip').remove();  
+  <% end %>
+<% end %>

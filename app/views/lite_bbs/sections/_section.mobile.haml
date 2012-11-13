@@ -1,0 +1,6 @@
+%table.table.table-bordered.forum
+  %tbody.head
+    %tr
+      %th= display_icon('th-large') + link_to(section.name, section, class: 'section_name')
+  %tbody.body
+    = render section.forums

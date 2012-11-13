@@ -1,0 +1,14 @@
+if ($('#topic_content_<%= @topic.id %>').is(':visible')) {
+  $('#topic_<%= @topic.id %> td.body').append("<%= j(render(partial: "quick_form", locals: {topic: @topic})) %>").slideDown();
+  $('#topic_content_<%= @topic.id %>').hide();
+  KindEditor.create('#topic_content_kindeditor_<%= @topic.id %>', {
+  	allowFileManager: false,
+  	resizeType: 1,
+  	height: 200,
+  	width: '100%',
+  	themeType: 'simple',
+  	items: ['fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+  	uploadJson: '/kindeditor/upload',
+  	fileManagerJson: '/kindeditor/filemanager'
+  });  
+}

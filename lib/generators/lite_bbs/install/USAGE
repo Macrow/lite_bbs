@@ -1,0 +1,9 @@
+Description:
+    Install LiteBBS for your application
+
+Example:
+    rails generate lite_bbs:install
+
+    This will create:
+        config/initializers/lite_bbs.rb
+        db/migrate/xxxxxxxxx_create_lite_bbs_tables.rb

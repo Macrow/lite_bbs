@@ -1,0 +1,53 @@
+@import 'compass/css3';
+@import 'compass/utilities';
+
+$topic_head_height: 22px;
+$topic_body_height: 28px;
+$topic_mobile_body_height: 22px;
+
+table.topic {
+  background: white;
+  tbody.head th {
+    height: $topic_head_height;
+    background: #EEE;
+  }
+  tbody.body td {
+    height: $topic_body_height;
+    line-height: $topic_body_height;
+  }
+  tbody.body td.mobile {
+    height: $topic_mobile_body_height;
+    line-height: $topic_mobile_body_height;
+  }  
+  a.name, a.title {
+    margin: 0 8px;
+  }
+  span.description {
+    font-weight: normal;
+    font-style:italic;
+    color: gray;
+    font-size: 0.9em;
+  }
+  .info, .counter, .last_reply {
+    font-weight: normal;
+    font-size: 0.9em;
+    color: gray;
+    text-align: center;
+  }
+  .info, .last_reply {
+    line-height: 1.2em;
+    vertical-align: middle;
+  }
+  .last_reply { 
+    font-size: 13px;
+  }
+  .divider {
+    margin: 0 5px;
+  }
+  .no_result {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 1.5em;
+  }
+}

@@ -1,0 +1,15 @@
+%ul.nav.nav-list
+  %li.nav-header Home
+  %li= link_to("#{display_icon('home')} #{t('lite_bbs.common.home')}".html_safe, admin_root_path)
+  %li.nav-header Sections
+  %li= link_to("#{display_icon('th-large')} #{t('lite_bbs.common.all')} #{t('lite_bbs.models.sections')}".html_safe, admin_sections_path)
+  %li= link_to("#{display_icon('plus-sign')} #{t('lite_bbs.common.new')} #{t('lite_bbs.models.section')}".html_safe, new_admin_section_path)
+  %li.nav-header Forums
+  %li= link_to("#{display_icon('th-list')} #{t('lite_bbs.common.all')} #{t('lite_bbs.models.forums')}".html_safe, admin_forums_path)
+  %li= link_to("#{display_icon('plus-sign')} #{t('lite_bbs.common.new')} #{t('lite_bbs.models.forum')}".html_safe, new_admin_forum_path)
+  %li.nav-header Topics
+  %li= link_to("#{display_icon('comment')} #{t('lite_bbs.common.all')} #{t('lite_bbs.models.topics')}".html_safe, admin_topics_path)
+  %li= link_to("#{display_icon('fire')} #{t('lite_bbs.common.all')} #{t('lite_bbs.common.stick')} #{t('lite_bbs.models.topics')}".html_safe, admin_topics_path(stick: true))
+  %li= link_to("#{display_icon('ban-circle')} #{t('lite_bbs.common.all')} #{t('lite_bbs.common.seal')} #{t('lite_bbs.models.topics')}".html_safe, admin_topics_path(seal: true))
+  %li= link_to("#{display_icon('plus-sign')} #{t('lite_bbs.common.new')} #{t('lite_bbs.models.topic')}".html_safe, new_admin_topic_path)
+  

@@ -1,0 +1,8 @@
+= simple_form_for [:admin, @section], class: 'form' do |f|
+  = f.input :name, input_html: {class: 'span6'}
+  = f.input :description, as: 'text', input_html: {rows: 5, class: 'span6'}
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to t('lite_bbs.actions.destroy'), confirm_destroy_admin_section_path(@section), class: 'btn btn-danger' if @section.valid?
+    = link_to t('lite_bbs.actions.cancel'), admin_sections_path, class: 'btn'
+        

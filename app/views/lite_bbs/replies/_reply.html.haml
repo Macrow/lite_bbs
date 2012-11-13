@@ -1,0 +1,13 @@
+%tr{id: "reply_#{reply.id}"}
+  %td.user= display_user_info(reply.user)
+  %td.body
+    = link_to '', "#reply_#{reply.id}"
+    = display_icon('play-circle') + content_tag(:span, "#{t('lite_bbs.common.number')}: #{reply.floor}", class: 'post_time')
+    = display_icon('time') + content_tag(:span, "#{t('lite_bbs.actions.posted')}: #{time_ago_in_words(reply.created_at)}", class: 'post_time')
+    .quick_management
+      - if can? :destroy, reply
+        = link_to t('lite_bbs.actions.delete'), reply, method: :delete, class: 'tools btn btn-mini btn-danger', confirm: t('lite_bbs.actions.confirm'), remote: true
+      - if can? :update, reply
+        = link_to t('lite_bbs.actions.edit'), [:edit, reply], class: 'tools btn btn-mini btn-info', remote: true
+    <hr>
+    = render 'lite_bbs/replies/reply_content', reply: reply

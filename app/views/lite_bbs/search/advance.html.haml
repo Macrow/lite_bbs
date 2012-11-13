@@ -1,0 +1,12 @@
+#lite_bbs
+  = title "#{LiteBbs::bbs_name} - #{t('lite_bbs.actions.advanced_search')}"
+  = display_breadcrumb
+  %table.table.table-bordered.table-hover.topic
+    %tbody.head
+      %tr
+        %th= t('lite_bbs.actions.advanced_search')
+    %tbody#topics.body
+      %tr
+        %td
+          .advance_serch= render 'baidu'
+          .advance_serch= render 'google'

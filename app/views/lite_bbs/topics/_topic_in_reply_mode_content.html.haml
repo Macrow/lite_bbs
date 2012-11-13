@@ -1,0 +1,4 @@
+%div{id: "topic_content_#{topic.id}"}
+  .title= topic.title
+  .content= topic.content.html_safe
+  .modified= display_modified(topic)

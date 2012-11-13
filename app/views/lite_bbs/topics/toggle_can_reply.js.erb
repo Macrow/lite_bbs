@@ -1,0 +1,12 @@
+$('#topic_<%= @topic.id %> .quick_management span.can_reply').replaceWith('<span class="can_reply"><%= link_to "#{@topic.can_reply? ? t('lite_bbs.actions.seal') : t('lite_bbs.actions.cancel_seal')}", toggle_can_reply_topic_path(@topic), method: :put, class: 'tools btn btn-mini btn-inverse', remote: true %></span>');
+<% if @topic.can_reply %>
+  $('#topic_<%= @topic.id %> span.topic_label span.seal').remove();
+  if (!$('table#reply_form_table').is(':visible')) {
+    $('table#reply_form_table').show();
+  }
+<% else %>
+  $('#topic_<%= @topic.id %> span.topic_label').append('<%= display_label(t("lite_bbs.actions.seal"), "seal") %>');
+  if ($('table#reply_form_table').is(':visible')) {
+    $('table#reply_form_table').hide();
+  }  
+<% end %>
